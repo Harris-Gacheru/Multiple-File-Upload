@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="content">
+    <form [formGroup]="uploadForm" enctype="multipart/form-data" method="post">
+      <p>Upload multiple files</p>
+      <input type="file" class="form-control" (change)="onFileChange($event)" name="photos" multiple>
+      <input type="text" class="form-control" formControlName="name" placeholder="Name">
+
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </form>
+
+    <div class="uploads" *ngIf="uploadedImages.length > 0">
+      <p>Uploaded Images</p>
+
+      <div class="images">
+        <img *ngFor="let image of uploadedImages" src="http://localhost:3800/uploads/{{ image }}" alt="uploads">
+      </div>
+    </div>
+  </div>
+</div>
